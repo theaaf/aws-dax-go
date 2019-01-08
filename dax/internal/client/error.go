@@ -38,11 +38,22 @@ type daxRequestFailure struct {
 	codes []int
 }
 
+type DaxTransactionCanceledReason struct {
+	Code    string
+	Message string
+}
+
 type daxTransactionCanceledFailure struct {
 	daxRequestFailure
 	cancellationReasonCodes []string
 	cancellationReasonMsgs  []string
 	cancellationReasonItems []byte
+}
+
+type DaxTransactionCanceledFailure = daxTransactionCanceledFailure
+
+func (f *daxTransactionCanceledFailure) CancellationReasonCodes() []string {
+	return f.cancellationReasonCodes
 }
 
 func newDaxRequestFailure(codes []int, errorCode, message, requestId string, statusCode int) *daxRequestFailure {

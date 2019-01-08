@@ -127,3 +127,9 @@ func (c *Config) requestOptions(read bool, ctx context.Context, opts ...request.
 }
 
 var _ dynamodbiface.DynamoDBAPI = (*Dax)(nil)
+
+type DaxTransactionCanceledFailure interface {
+	CancellationReasonCodes() []string
+}
+
+var _ DaxTransactionCanceledFailure = (*client.DaxTransactionCanceledFailure)(nil)
