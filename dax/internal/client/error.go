@@ -56,6 +56,10 @@ func (f *daxTransactionCanceledFailure) CancellationReasonCodes() []string {
 	return f.cancellationReasonCodes
 }
 
+func (f *daxTransactionCanceledFailure) CancellationReasonMessages() []string {
+	return f.cancellationReasonMsgs
+}
+
 func newDaxRequestFailure(codes []int, errorCode, message, requestId string, statusCode int) *daxRequestFailure {
 	return &daxRequestFailure{
 		RequestFailure: awserr.NewRequestFailure(awserr.New(errorCode, message, nil), statusCode, requestId),
