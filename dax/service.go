@@ -17,12 +17,14 @@ package dax
 
 import (
 	"context"
+	"time"
+
 	"github.com/aws/aws-dax-go/dax/internal/client"
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
-	"time"
 )
 
 // Dax makes requests to the Amazon DAX API, which conforms to the DynamoDB API.
@@ -129,7 +131,9 @@ func (c *Config) requestOptions(read bool, ctx context.Context, opts ...request.
 var _ dynamodbiface.DynamoDBAPI = (*Dax)(nil)
 
 type DaxTransactionCanceledFailure interface {
+	awserr.Error
 	CancellationReasonCodes() []string
+	CancellationReasonMessages() []string
 }
 
 var _ DaxTransactionCanceledFailure = (*client.DaxTransactionCanceledFailure)(nil)
