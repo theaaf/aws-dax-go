@@ -16,7 +16,7 @@
 package dax
 
 import (
-	"github.com/aws/aws-dax-go/dax/internal/client"
+	"github.com/theaaf/aws-dax-go/dax/internal/client"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/dynamodb"

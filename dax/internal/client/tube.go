@@ -22,7 +22,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/aws/aws-dax-go/dax/internal/cbor"
+	"github.com/theaaf/aws-dax-go/dax/internal/cbor"
 )
 
 const magic = "J7yne5G"
